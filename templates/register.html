@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Register Staff | TTSET GLOBAL LTD{% endblock %}
+{% block content %}
+<section class="auth-shell">
+    <aside class="auth-context" data-aos="fade-right" data-aos-duration="850">
+        <p class="eyebrow">Staff Onboarding</p>
+        <h1>Create Worker Account</h1>
+        <p class="lead">This form creates worker access for TTSET GLOBAL LTD team members. Administrator profiles remain controlled by system ownership.</p>
+        <ul class="auth-list">
+            <li>{{ icon('users') }} Worker role is assigned by default for every registration.</li>
+            <li>{{ icon('identification') }} Use official names and department information for clean records.</li>
+            <li>{{ icon('shield-check') }} Password policy requires at least eight characters.</li>
+        </ul>
+    </aside>
+
+    <div class="auth-card" data-aos="fade-left" data-aos-duration="850">
+        <p class="eyebrow">Registration Form</p>
+        <h2>Register Staff Account</h2>
+        <p class="muted">Complete all fields accurately before submission.</p>
+
+        <form method="post" class="auth-form" novalidate>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="full_name">Full Name</label>
+                    <input class="input-control" id="full_name" type="text" name="full_name" placeholder="Enter full name" value="{{ request.form.get('full_name', '') }}" autocomplete="name" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <input class="input-control" id="username" type="text" name="username" placeholder="Choose a username" value="{{ request.form.get('username', '') }}" autocomplete="username" required>
+                    <p class="field-meta">{{ icon('identification') }} 3-30 chars: lowercase letters, numbers, dot, underscore, dash.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input class="input-control" id="email" type="email" name="email" placeholder="Enter email address" value="{{ request.form.get('email', '') }}" autocomplete="email" required>
+                    <p class="field-meta">{{ icon('envelope') }} Use an active work email for notifications.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="department">Department</label>
+                    <input class="input-control" id="department" type="text" name="department" placeholder="e.g. ICT Support" value="{{ request.form.get('department', '') }}" autocomplete="organization-title" required>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input class="input-control" id="password" type="password" name="password" minlength="8" placeholder="Create a password" autocomplete="new-password" required aria-describedby="password-hint">
+                    <p class="field-hint" id="password-hint">Use at least 8 characters with a strong mix of letters, numbers, and symbols.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input class="input-control" id="confirm_password" type="password" name="confirm_password" minlength="8" placeholder="Confirm password" autocomplete="new-password" required>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" type="submit">{{ icon('check-circle') }} Create Staff Account</button>
+        </form>
+
+        <div class="auth-links">
+            <a href="{{ url_for('login') }}">{{ icon('lock-closed') }} Already have an account? Login</a>
+            <a href="{{ url_for('index') }}">{{ icon('home') }} Return Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

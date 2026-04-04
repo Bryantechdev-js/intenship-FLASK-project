@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Admin Dashboard | TTSET GLOBAL LTD{% endblock %}
+{% block content %}
+<header class="page-header" data-aos="fade-up" data-aos-duration="800">
+    <div class="dashboard-headline">
+        <p class="eyebrow">Admin Area</p>
+        <h1>Admin Dashboard</h1>
+        <p class="lead">Operational summary, user oversight, and directory visibility for TTSET GLOBAL LTD administrators.</p>
+    </div>
+    <span class="badge badge-admin">{{ icon('shield-check') }} Admin Access</span>
+</header>
+
+<nav class="dashboard-tabs" aria-label="Admin dashboard sections">
+    <a class="dashboard-tab-link" href="#overview">Overview</a>
+    <a class="dashboard-tab-link" href="#staff-directory">Staff Directory</a>
+</nav>
+
+<section id="overview" class="grid grid-4 stat-grid">
+    <article class="stat-card" data-aos="fade-up" data-aos-delay="40">
+        <div class="stat-card-head">
+            <span>Total Users</span>
+            {{ icon('users') }}
+        </div>
+        <p class="stat-value">{{ total_users }}</p>
+    </article>
+
+    <article class="stat-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="stat-card-head">
+            <span>Total Workers</span>
+            {{ icon('identification') }}
+        </div>
+        <p class="stat-value">{{ total_workers }}</p>
+    </article>
+
+    <article class="stat-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-card-head">
+            <span>Total Admins</span>
+            {{ icon('shield-check') }}
+        </div>
+        <p class="stat-value">{{ total_admins }}</p>
+    </article>
+
+    <article class="stat-card" data-aos="fade-up" data-aos-delay="280">
+        <div class="stat-card-head">
+            <span>Latest Registered</span>
+            {{ icon('clock') }}
+        </div>
+        {% if latest_user %}
+            <p class="stat-value stat-value-sm">{{ latest_user.full_name }}</p>
+            <p class="muted">@{{ latest_user.username }}</p>
+            <p class="muted">{{ latest_user.department }} | {{ latest_user.role|capitalize }}</p>
+        {% else %}
+            <p class="muted">No user records yet.</p>
+        {% endif %}
+    </article>
+</section>
+
+<section id="staff-directory" class="panel" data-aos="fade-up" data-aos-duration="900">
+    <div class="table-shell">
+        <div class="table-toolbar">
+            <div>
+                <h2>Staff Directory</h2>
+                <p class="table-note">Future enhancement: search and filter controls can be added without changing route structure.</p>
+            </div>
+            <span class="badge badge-neutral">{{ icon('information-circle') }} Read-only summary view</span>
+        </div>
+
+        {% if users %}
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td data-label="ID">{{ user.id }}</td>
+                            <td data-label="Full Name">{{ user.full_name }}</td>
+                            <td data-label="Username">@{{ user.username }}</td>
+                            <td data-label="Email">{{ user.email }}</td>
+                            <td data-label="Department">{{ user.department }}</td>
+                            <td data-label="Role">
+                                <span class="badge {% if user.role == 'admin' %}badge-admin{% else %}badge-worker{% endif %}">
+                                    {{ user.role|capitalize }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h3>No staff records available</h3>
+                <p class="muted">Once users are added, the directory will display role and department details here.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

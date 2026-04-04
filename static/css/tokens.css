@@ -1,0 +1,177 @@
+:root {
+    /* Mandatory base palette */
+    --brand-50: #f5faf7;
+    --brand-100: #e7f3ed;
+    --brand-200: #d0e7dc;
+    --brand-300: #aed5c2;
+    --brand-400: #86c0a4;
+    --brand-500: #376a51;
+    --brand-600: #294f3c;
+    --brand-700: #1b3428;
+    --brand-800: #0d1913;
+    --brand-900: #000000;
+
+    --neutral-50: #f7f8f7;
+    --neutral-100: #eef1ef;
+    --neutral-200: #dde2df;
+    --neutral-300: #c5ccc8;
+    --neutral-400: #a2aca5;
+    --neutral-500: #7f8b84;
+    --neutral-600: #65716a;
+    --neutral-700: #4e5953;
+    --neutral-800: #39433e;
+    --neutral-900: #242d28;
+    --neutral-950: #131916;
+
+    --premium-50: #fdfaf1;
+    --premium-100: #fbf3df;
+    --premium-200: #f7e7bf;
+    --premium-300: #f2d692;
+    --premium-400: #ebc15b;
+    --premium-500: #e8b741;
+    --premium-600: #e4a91d;
+    --premium-700: #c08f17;
+    --premium-800: #9c7413;
+    --premium-900: #77590e;
+
+    /* Semantic scales */
+    --success-50: #ecf9f1;
+    --success-100: #d2f1df;
+    --success-200: #a8e3c2;
+    --success-300: #79d3a1;
+    --success-400: #43bd79;
+    --success-500: #1f9d55;
+    --success-600: #177a41;
+    --success-700: #115a31;
+    --success-800: #0c3e22;
+    --success-900: #072515;
+
+    --warning-50: #fff8e8;
+    --warning-100: #feefc9;
+    --warning-200: #fce09b;
+    --warning-300: #f8cd66;
+    --warning-400: #f0b632;
+    --warning-500: #d89a14;
+    --warning-600: #ad7a10;
+    --warning-700: #845c0c;
+    --warning-800: #5c3f08;
+    --warning-900: #3a2705;
+
+    --error-50: #fdecec;
+    --error-100: #fbd5d5;
+    --error-200: #f7adad;
+    --error-300: #f18080;
+    --error-400: #e45454;
+    --error-500: #cf2e2e;
+    --error-600: #a52222;
+    --error-700: #7c1a1a;
+    --error-800: #541111;
+    --error-900: #330a0a;
+
+    --info-50: #eaf4fd;
+    --info-100: #d4e9fb;
+    --info-200: #a8d3f7;
+    --info-300: #79baf0;
+    --info-400: #4a9ce7;
+    --info-500: #267fd8;
+    --info-600: #1d63aa;
+    --info-700: #164b80;
+    --info-800: #0e3357;
+    --info-900: #081e33;
+
+    /* Theme aliases */
+    --bg-canvas: var(--neutral-50);
+    --bg-surface: #ffffff;
+    --bg-surface-muted: var(--neutral-100);
+    --text-primary: #111613;
+    --text-secondary: var(--neutral-700);
+    --text-tertiary: var(--neutral-600);
+    --text-inverse: #ffffff;
+    --border-subtle: var(--neutral-200);
+    --border-strong: var(--neutral-300);
+    --brand-solid: var(--brand-500);
+    --brand-solid-hover: var(--brand-600);
+    --brand-solid-press: var(--brand-700);
+    --premium-solid: var(--premium-500);
+    --premium-solid-hover: var(--premium-600);
+    --premium-solid-press: var(--premium-700);
+
+    /* Typography scale */
+    --font-heading: "Manrope", "Segoe UI", sans-serif;
+    --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", Consolas, monospace;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+
+    --line-xs: 1rem;
+    --line-sm: 1.25rem;
+    --line-md: 1.5rem;
+    --line-lg: 1.75rem;
+    --line-xl: 1.875rem;
+    --line-2xl: 2.125rem;
+    --line-3xl: 2.5rem;
+    --line-4xl: 2.875rem;
+
+    /* Spacing scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+
+    /* Radius and shadow */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+    --radius-2xl: 1.5rem;
+    --radius-round: 999px;
+    --shadow-soft: 0 12px 32px rgba(17, 22, 19, 0.08);
+    --shadow-strong: 0 18px 45px rgba(17, 22, 19, 0.14);
+    --shadow-focus: 0 0 0 3px rgba(134, 192, 164, 0.45);
+
+    /* Motion */
+    --motion-fast: 120ms;
+    --motion-base: 180ms;
+    --motion-slow: 260ms;
+    --motion-emphasis: 320ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-emphasis: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    /* Breakpoints */
+    --bp-xs: 0px;
+    --bp-sm: 480px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+
+    --container-max: 1200px;
+    --gutter-desktop: 24px;
+    --gutter-tablet: 20px;
+    --gutter-mobile: 16px;
+}
+
+[data-theme="dark"] {
+    --bg-canvas: #131916;
+    --bg-surface: #1a221e;
+    --bg-surface-muted: #1f2a25;
+    --text-primary: #f5faf7;
+    --text-secondary: #d0e7dc;
+    --text-tertiary: #a2aca5;
+    --text-inverse: #111613;
+    --border-subtle: #39433e;
+    --border-strong: #4e5953;
+}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}My Profile | TTSET GLOBAL LTD{% endblock %}
+{% block content %}
+<header class="page-header" data-aos="fade-up" data-aos-duration="850">
+    <div class="dashboard-headline">
+        <p class="eyebrow">Worker Area</p>
+        <h1>My Profile</h1>
+        <p class="lead">Personal staff details visible only to the authenticated worker session.</p>
+    </div>
+    <span class="badge badge-worker">{{ icon('identification') }} Worker Record</span>
+</header>
+
+<section class="panel profile-card" data-aos="fade-up" data-aos-delay="60" data-aos-duration="900">
+    <div class="profile-head">
+        <div class="profile-avatar">
+            <img src="{{ url_for('static', filename='media/profile-avatar.svg') }}" alt="" loading="lazy">
+        </div>
+        <div>
+            <h2>{{ user.full_name }}</h2>
+            <p class="muted">@{{ user.username }} | {{ user.role|capitalize }}</p>
+        </div>
+    </div>
+
+    <div class="profile-row">
+        <span class="profile-label">Full Name</span>
+        <strong class="profile-value">{{ user.full_name }}</strong>
+    </div>
+    <div class="profile-row">
+        <span class="profile-label">Username</span>
+        <strong class="profile-value">@{{ user.username }}</strong>
+    </div>
+    <div class="profile-row">
+        <span class="profile-label">Email</span>
+        <strong class="profile-value">{{ user.email }}</strong>
+    </div>
+    <div class="profile-row">
+        <span class="profile-label">Department</span>
+        <strong class="profile-value">{{ user.department }}</strong>
+    </div>
+    <div class="profile-row">
+        <span class="profile-label">Role</span>
+        <strong class="profile-value">{{ user.role|capitalize }}</strong>
+    </div>
+</section>
+
+<section class="panel security-panel" data-aos="fade-up" data-aos-delay="140" data-aos-duration="900">
+    <h3 class="info-card-title">{{ icon('shield-check') }} Privacy Note</h3>
+    <p class="muted">This page is read-only and scoped to the authenticated worker account.</p>
+</section>
+{% endblock %}

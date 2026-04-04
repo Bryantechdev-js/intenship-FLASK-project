@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Welcome | TTSET GLOBAL LTD{% endblock %}
+{% block content %}
+<section class="hero-pin-wrap">
+    <section class="hero-banner-fixed" data-aos="zoom-out" data-aos-duration="900">
+        <div class="hero-banner-overlay">
+            <div>
+                <p class="eyebrow">Modern Internal Experience</p>
+                <h1 class="hero-typing">
+                    <span data-typing data-typing-words="Secure Teams|Smarter Workflows|Trusted Operations"></span><span class="typing-caret" aria-hidden="true"></span>
+                </h1>
+                <p class="lead">A premium workspace for TTSET GLOBAL LTD staff, designed for clarity, confidence, and role-specific speed.</p>
+                <div class="button-row hero-banner-actions">
+                    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}">{{ icon('arrow-right') }} Enter Staff Portal</a>
+                    <a class="btn btn-secondary btn-lg" href="#contact-form">{{ icon('envelope') }} Contact Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<div class="home-scroll-shell">
+    <section class="section-card home-hero" data-aos="fade-up" data-aos-duration="900">
+        <div class="hero-copy">
+            <p class="eyebrow">Trusted Internal Operations</p>
+            <h2>TTSET Staff Portal Built for Clarity, Security, and Speed</h2>
+            <p class="lead">
+                Role-based access for administrators and workers, with a modern interface that keeps onboarding, monitoring, and internal communication clear.
+            </p>
+            <div class="button-row">
+                <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}">{{ icon('lock-closed') }} Access Staff Portal</a>
+                <a class="btn btn-secondary btn-lg" href="{{ url_for('register') }}">{{ icon('users') }} Register Staff</a>
+            </div>
+
+            <div class="proof-strip" aria-label="Portal trust metrics">
+                <article class="proof-item" data-aos="fade-up" data-aos-delay="80">
+                    <p class="proof-value">24/7</p>
+                    <p class="proof-label">Role-based access availability</p>
+                </article>
+                <article class="proof-item" data-aos="fade-up" data-aos-delay="180">
+                    <p class="proof-value">AA</p>
+                    <p class="proof-label">Accessibility-first UI baseline</p>
+                </article>
+                <article class="proof-item" data-aos="fade-up" data-aos-delay="280">
+                    <p class="proof-value">&lt; 2.5s</p>
+                    <p class="proof-label">Targeted LCP performance</p>
+                </article>
+            </div>
+        </div>
+
+        <aside class="hero-media panel sticky-insight-card" data-aos="fade-left" data-aos-duration="900">
+            <div class="media-frame">
+                <video
+                    class="hero-video"
+                    data-hero-video
+                    muted
+                    loop
+                    autoplay
+                    playsinline
+                    preload="metadata"
+                    poster="{{ url_for('static', filename='media/hero-poster.svg') }}"
+                    aria-label="Portal overview video">
+                    <source src="https://cdn.coverr.co/videos/coverr-working-team-discussion-1579/1080p.mp4" type="video/mp4">
+                </video>
+                <img
+                    class="hero-poster"
+                    data-hero-poster
+                    src="{{ url_for('static', filename='media/hero-poster.svg') }}"
+                    alt="TTSET dashboard preview with secure operations highlights"
+                    hidden>
+                <button class="video-toggle" type="button" data-video-toggle>Pause video</button>
+            </div>
+            <p class="media-caption">Media mode combines online video and static fallback to preserve readability and performance across devices.</p>
+            <div class="credential-box">
+                <div class="credential-row"><strong>Demo Admin</strong><code>admin / Admin@12345</code></div>
+                <div class="credential-row"><strong>Demo Worker</strong><code>worker / Worker@12345</code></div>
+            </div>
+        </aside>
+    </section>
+
+    <section class="section-block" id="services">
+        <div class="section-heading">
+            <p class="eyebrow">Core Services</p>
+            <h2>Service Visibility with Actionable Clarity</h2>
+            <p class="lead">The portal mirrors TTSET GLOBAL LTD service strengths with high-impact media, concise copy, and direct navigation cues.</p>
+        </div>
+
+        <div class="service-layout">
+            <aside class="panel sticky-insight-card" data-aos="fade-right" data-aos-duration="900">
+                <p class="eyebrow">Interactive Insight</p>
+                <h3>{{ icon('shield-check') }} Why this portal feels faster</h3>
+                <p class="muted">Cards, buttons, and sections use refined micro-interactions, balanced hover states, and motion tuned for professional readability.</p>
+                <img class="feature-media" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Modern digital workspace planning board" loading="lazy" referrerpolicy="no-referrer">
+                <div class="button-row">
+                    <a class="btn btn-ghost btn-sm" href="{{ url_for('login') }}">Try Live Login</a>
+                    <a class="btn btn-secondary btn-sm" href="#contact-form">Talk to Team</a>
+                </div>
+            </aside>
+
+            <div class="feature-grid">
+                <article class="panel feature-card" data-aos="fade-up" data-aos-delay="40">
+                    <img class="feature-media" src="{{ url_for('static', filename='media/service-software.svg') }}" alt="Software development interface illustration" loading="lazy">
+                    <h3>{{ icon('code-bracket') }} Software Development</h3>
+                    <p>Custom web and desktop systems built to solve operational and business-critical workflows.</p>
+                </article>
+                <article class="panel feature-card" data-aos="fade-up" data-aos-delay="140">
+                    <img class="feature-media" src="{{ url_for('static', filename='media/service-analytics.svg') }}" alt="Data analytics dashboard illustration" loading="lazy">
+                    <h3>{{ icon('chart-bar') }} Data Analytics</h3>
+                    <p>Insight-driven dashboards and reports designed to support confident decision-making across teams.</p>
+                </article>
+                <article class="panel feature-card" data-aos="fade-up" data-aos-delay="240">
+                    <img class="feature-media" src="{{ url_for('static', filename='media/service-cyber.svg') }}" alt="Cybersecurity shield and access illustration" loading="lazy">
+                    <h3>{{ icon('shield-check') }} Cybersecurity</h3>
+                    <p>Secure access controls, awareness standards, and practical hardening measures for staff operations.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-form" class="section-card contact-section" data-aos="fade-up" data-aos-duration="900">
+        <div class="contact-layout">
+            <div class="contact-copy">
+                <p class="eyebrow">Contact TTSET</p>
+                <h2>Request Support or Ask About Services</h2>
+                <p class="lead">Send your message directly through FormSubmit. We apply client-side sanitization and strict validation before submission.</p>
+                <ul class="auth-list">
+                    <li>{{ icon('check-circle') }} Form fields are validated for format and required lengths.</li>
+                    <li>{{ icon('shield-check') }} Inputs are sanitized to reduce unsafe characters.</li>
+                    <li>{{ icon('clock') }} Typical response window: within one business day.</li>
+                </ul>
+                {% if request.args.get('contact') == 'success' %}
+                    <div class="flash flash-success" role="status" aria-live="polite">
+                        {{ icon('check-circle', 'icon') }}
+                        <p>Your message was submitted successfully. Our team will respond shortly.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <form
+                class="auth-form contact-form"
+                action="https://formsubmit.co/bryantech.dev@gmail.com"
+                method="POST"
+                data-sanitize-form
+                data-form-kind="contact"
+                novalidate>
+                <input type="hidden" name="_subject" value="TTSET Portal Contact Request">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="{{ url_for('index', _external=True) }}?contact=success#contact-form">
+                <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="contact_name">Full Name</label>
+                        <input class="input-control" id="contact_name" name="name" type="text" minlength="2" maxlength="80" pattern="[A-Za-z][A-Za-z '\-.,]{1,79}" required autocomplete="name" placeholder="Enter full name">
+                        <p class="field-error" id="contact-name-error" hidden></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="contact_email">Email</label>
+                        <input class="input-control" id="contact_email" name="email" type="email" maxlength="120" required autocomplete="email" placeholder="Enter email address">
+                        <p class="field-error" id="contact-email-error" hidden></p>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="contact_subject">Subject</label>
+                    <input class="input-control" id="contact_subject" name="subject" type="text" minlength="4" maxlength="120" required placeholder="What do you need help with?">
+                    <p class="field-error" id="contact-subject-error" hidden></p>
+                </div>
+
+                <div class="form-field">
+                    <label for="contact_message">Message</label>
+                    <textarea class="input-control" id="contact_message" name="message" minlength="20" maxlength="1200" required placeholder="Write your message in detail"></textarea>
+                    <p class="field-error" id="contact-message-error" hidden></p>
+                </div>
+
+                <button class="btn btn-primary btn-lg" type="submit">{{ icon('envelope') }} Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section-card cta-strip" data-aos="fade-up" data-aos-duration="900">
+        <div>
+            <p class="eyebrow">Start with Confidence</p>
+            <h2>Ready to continue with TTSET GLOBAL LTD?</h2>
+            <p>Move directly to the staff workspace, explore services, or connect with operations support.</p>
+        </div>
+        <div class="button-row">
+            <a class="btn btn-secondary" href="#contact-form">{{ icon('envelope') }} Contact Us</a>
+            <a class="btn btn-ghost" href="#services">{{ icon('arrow-right') }} Explore Services</a>
+            <a class="btn btn-primary" href="{{ url_for('login') }}">{{ icon('lock-closed') }} Access Staff Portal</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

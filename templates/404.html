@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Page Not Found | TTSET GLOBAL LTD{% endblock %}
+{% block content %}
+<section class="section-card error-hero" data-aos="zoom-in" data-aos-duration="850">
+    <p class="eyebrow">Navigation Error</p>
+    <h1>404 - Page Not Found</h1>
+    <p class="lead">The page you requested is unavailable or may have moved. Use one of the actions below to continue safely.</p>
+    <img class="error-media" src="{{ url_for('static', filename='media/error-404.svg') }}" alt="404 illustration showing navigational split paths" loading="lazy">
+    <div class="button-row button-row-center">
+        <a class="btn btn-primary" href="{{ url_for('index') }}">{{ icon('home') }} Return Home</a>
+        {% if g.user %}
+            <a class="btn btn-ghost" href="{{ url_for('dashboard') }}">{{ icon('arrow-right') }} Go to Dashboard</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

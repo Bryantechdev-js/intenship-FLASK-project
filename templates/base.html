@@ -1,0 +1,146 @@
+{% from "_icons.html" import icon %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TTSET GLOBAL LTD staff portal for secure role-based access, onboarding, and team operations.">
+    <title>{% block title %}TTSET GLOBAL LTD{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script defer src="{{ url_for('static', filename='js/portal.js') }}"></script>
+</head>
+<body>
+<div class="page-loader" data-page-loader role="status" aria-live="polite">
+    <div class="loader-pulse" aria-hidden="true"></div>
+    <p>Loading TTSET secure workspace...</p>
+</div>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+    <div class="container header-shell">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="TTSET GLOBAL LTD home">
+            <img class="brand-mark" src="{{ url_for('static', filename='media/brand-mark.svg') }}" alt="">
+            <span class="brand-copy">
+                <span class="brand-name">TTSET GLOBAL LTD</span>
+                <span class="brand-sub">Secure Staff Portal</span>
+            </span>
+        </a>
+
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">
+            <span class="visually-hidden">Toggle navigation</span>
+            {{ icon('bars-3') }}
+        </button>
+
+        <nav id="primary-nav" class="main-nav" aria-label="Main navigation">
+            {% if g.user %}
+                <span class="role-pill role-pill-{{ session.get('role') }}">{{ session.get('role')|capitalize }}</span>
+                <a class="nav-link" href="{{ url_for('dashboard') }}" {% if request.endpoint in ['dashboard', 'admin_dashboard', 'worker_dashboard'] %}aria-current="page"{% endif %}>
+                    {{ icon('home') }} Dashboard
+                </a>
+                {% if session.get('role') == 'worker' %}
+                    <a class="nav-link" href="{{ url_for('worker_profile') }}" {% if request.endpoint == 'worker_profile' %}aria-current="page"{% endif %}>
+                        {{ icon('identification') }} My Profile
+                    </a>
+                {% endif %}
+                <a class="nav-link" href="{{ url_for('logout') }}">
+                    {{ icon('lock-closed') }} Logout
+                </a>
+                <span class="nav-user">{{ icon('user-circle') }} {{ g.user.full_name }}</span>
+            {% else %}
+                <a class="nav-link" href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}aria-current="page"{% endif %}>
+                    {{ icon('home') }} Home
+                </a>
+                <a class="nav-link" href="{{ url_for('login') }}" {% if request.endpoint == 'login' %}aria-current="page"{% endif %}>
+                    {{ icon('lock-closed') }} Login
+                </a>
+                <a class="nav-link" href="{{ url_for('register') }}" {% if request.endpoint == 'register' %}aria-current="page"{% endif %}>
+                    {{ icon('users') }} Register Staff
+                </a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main id="main-content" class="container site-main {% if request.endpoint == 'index' %}site-main-home{% endif %}" tabindex="-1">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <section class="flash-stack" aria-live="polite" aria-atomic="true">
+                {% for category, message in messages %}
+                    <article class="flash flash-{{ category }}" role="alert">
+                        {% if category == 'success' %}
+                            {{ icon('check-circle', 'icon') }}
+                        {% elif category == 'danger' %}
+                            {{ icon('exclamation-triangle', 'icon') }}
+                        {% elif category == 'warning' %}
+                            {{ icon('clock', 'icon') }}
+                        {% else %}
+                            {{ icon('information-circle', 'icon') }}
+                        {% endif %}
+                        <p>{{ message }}</p>
+                        <button class="flash-close" type="button" data-dismiss-flash aria-label="Dismiss notification">&times;</button>
+                    </article>
+                {% endfor %}
+            </section>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer" id="contact-info">
+    <div class="container footer-shell">
+        <section class="footer-brand">
+            <h3 class="footer-title">TTSET GLOBAL LTD</h3>
+            <p class="footer-note">
+                Empowering businesses and learners through technology, training, and digital solutions.
+            </p>
+            <p class="footer-meta">Portal baseline: role-aware navigation, secure sessions, CSRF-protected forms, and progressive UI accessibility.</p>
+            <div class="footer-trust-list">
+                <span class="badge badge-neutral">WCAG 2.2 AA Focus</span>
+                <span class="badge badge-neutral">Performance First</span>
+                <span class="badge badge-neutral">Secure by Default</span>
+            </div>
+        </section>
+
+        <section class="footer-links-col">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Staff Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register Worker</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact-form">Contact Form</a></li>
+            </ul>
+        </section>
+
+        <section class="footer-contact-col">
+            <h4 class="footer-title">Contact Readiness</h4>
+            <p class="footer-note">{{ icon('envelope') }} {{ formsubmit_email }}</p>
+            <p class="footer-note">{{ icon('building-office') }} Head Office, Lagos (update to official address)</p>
+            <p class="footer-note">{{ icon('clock') }} Mon - Fri, 8:00 AM - 5:00 PM</p>
+            <p class="footer-meta">For production, confirm mailbox verification and official channels.</p>
+        </section>
+
+        <section class="footer-media-col">
+            <h4 class="footer-title">Work Culture</h4>
+            <div class="footer-media">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="TTSET-inspired collaborative office team session" loading="lazy" referrerpolicy="no-referrer">
+            </div>
+            <p class="footer-meta">Great digital platforms are powered by clear communication and trusted teams.</p>
+        </section>
+    </div>
+
+    <div class="container footer-bottom">
+        <p>&copy; 2026 TTSET GLOBAL LTD. All rights reserved.</p>
+        <a href="#main-content">Back to top</a>
+    </div>
+</footer>
+</body>
+</html>

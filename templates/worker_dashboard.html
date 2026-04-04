@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Worker Dashboard | TTSET GLOBAL LTD{% endblock %}
+{% block content %}
+<header class="page-header" data-aos="fade-up" data-aos-duration="800">
+    <div class="dashboard-headline">
+        <p class="eyebrow">Worker Area</p>
+        <h1>Worker Dashboard</h1>
+        <p class="lead">Welcome back. Your role-based workspace keeps profile details, notices, and security reminders in one place.</p>
+    </div>
+    <div class="button-row">
+        <a class="btn btn-primary" href="{{ url_for('worker_profile') }}">{{ icon('identification') }} View My Profile</a>
+    </div>
+</header>
+
+<nav class="dashboard-tabs" aria-label="Worker dashboard sections">
+    <a class="dashboard-tab-link" href="#welcome-panel">Welcome Panel</a>
+    <a class="dashboard-tab-link" href="#announcements">Announcements</a>
+</nav>
+
+<section id="welcome-panel" class="grid grid-2 worker-overview">
+    <article class="panel" data-aos="fade-right" data-aos-duration="900">
+        <h2 class="info-card-title">{{ icon('user-circle', 'icon icon-lg') }} Welcome Panel</h2>
+        <p><strong>Welcome, {{ user.full_name }}.</strong></p>
+        <ul class="list-clean">
+            <li><span class="profile-label">Department</span><span class="profile-value">{{ user.department }}</span></li>
+            <li><span class="profile-label">Role</span><span class="profile-value">{{ user.role|capitalize }}</span></li>
+            <li><span class="profile-label">Email</span><span class="profile-value">{{ user.email }}</span></li>
+        </ul>
+    </article>
+
+    <article class="panel" data-aos="fade-left" data-aos-duration="900">
+        <h2 class="info-card-title">{{ icon('shield-check', 'icon icon-lg') }} Quick Tips &amp; Notices</h2>
+        <ul class="list-clean">
+            <li><span>Keep your login credentials private and updated.</span></li>
+            <li><span>Use only assigned access paths for staff records.</span></li>
+            <li><span>Report suspicious login activity immediately.</span></li>
+            <li><span>Review internal notices during every sign-in session.</span></li>
+        </ul>
+    </article>
+</section>
+
+<section id="announcements" class="panel" data-aos="fade-up" data-aos-duration="900">
+    <h2 class="info-card-title">{{ icon('megaphone', 'icon icon-lg') }} Announcements</h2>
+    <ul class="announcement-list">
+        {% for item in announcements %}
+            <li class="announcement-item">
+                <span class="badge badge-worker">Internal Notice</span>
+                <span>{{ item }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
