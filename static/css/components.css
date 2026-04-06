@@ -81,6 +81,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
+    margin-top: 15px;
 }
 
 .button-row-center {

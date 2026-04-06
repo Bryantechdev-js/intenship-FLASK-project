@@ -149,6 +149,7 @@
     grid-template-columns: minmax(260px, 0.9fr) minmax(0, 2.1fr);
     gap: var(--space-5);
     align-items: start;
+    padding-inline: 30px;
 }
 
 .feature-grid {

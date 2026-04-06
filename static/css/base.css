@@ -185,6 +185,7 @@ li + li {
 
 .section-heading {
     margin-bottom: var(--space-6);
+    padding-inline: 30px;
 }
 
 main :focus-visible,
